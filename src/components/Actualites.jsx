@@ -1,6 +1,7 @@
 import { images } from "../assets/images";
 import imageRepresentatif from "../assets/imageRepresentatif.jpg";
-import videoActualite from "../assets/videos/1.mp4";
+import videoActualite from "../assets/videos/1-web.mp4";
+
 
 const actualites = Object.entries(images);
 
@@ -169,7 +170,6 @@ const Actualites = () => {
                 controls
                 playsInline
                 preload="metadata"
-                poster={imageRepresentatif}
               >
                 <source src={videoActualite} type="video/mp4" />
                 Votre navigateur ne prend pas en charge la lecture vidéo.
