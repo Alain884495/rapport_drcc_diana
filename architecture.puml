@@ -1,0 +1,73 @@
+@startuml
+
+skinparam component {
+  BackgroundColor<<Page>> LightBlue
+  BackgroundColor<<Layout>> LightGreen
+  BackgroundColor<<Component>> LightYellow
+}
+
+title Architecture React - DRCC DIANA
+
+package "src" {
+  [App.jsx] as App
+
+  package "pages" {
+    [PageAccueil.jsx] as PageAccueil <<Page>>
+  }
+
+  package "layouts" {
+    [MainLayout.jsx] as MainLayout <<Layout>>
+  }
+
+  package "components" {
+    [Navbar.jsx] as Navbar <<Component>>
+    [HeroBanner.jsx] as HeroBanner <<Component>>
+    [ListeServices.jsx] as ListeServices <<Component>>
+    [Actualites.jsx] as Actualites <<Component>>
+    [Footer.jsx] as Footer <<Component>>
+  }
+
+  package "assets" {
+    package "images" {
+      [imageHero.jpg]
+      [imageRepresentatif.jpg]
+      [01.jpg - 33.jpg]
+    }
+  }
+}
+
+' Relations
+App --> PageAccueil : import
+PageAccueil --> MainLayout : wrapper
+MainLayout --> Navbar : import
+MainLayout --> Footer : import
+PageAccueil --> HeroBanner : import
+PageAccueil --> Actualites : import
+HeroBanner --> ListeServices : import (interne)
+HeroBanner ..> imageHero.jpg : background
+
+' Structure visuelle
+rectangle "Structure de la Page" {
+  card "Navbar\n(sticky top)" as NavCard
+  
+  rectangle "HeroBanner" {
+    card "Titre + Contacts\n(image bg)" as HeroContent
+    card "ListeServices\n(4 cartes)" as ServicesCard
+  }
+  
+  card "Actualites\n(section news)" as ActuCard
+  card "Footer\n(bottom)" as FooterCard
+}
+
+NavCard -[hidden]-> HeroContent
+HeroContent -[hidden]-> ServicesCard
+ServicesCard -[hidden]-> ActuCard
+ActuCard -[hidden]-> FooterCard
+
+MainLayout ..> NavCard : render
+MainLayout ..> FooterCard : render
+PageAccueil ..> HeroContent : render
+PageAccueil ..> ServicesCard : render
+PageAccueil ..> ActuCard : render
+
+@enduml
