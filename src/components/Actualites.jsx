@@ -66,8 +66,8 @@ const Actualites = () => {
             Actualités sur la préparation de FOIRE MEVA
           </span>
 
-          <h2 className="text-5xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-            FIVORIANA MAHAKASIKA NY FANOMANANA NY FOIRE MEVA 29 JOLAY
+          <h2 className="text-lg font-semibold text-blue-600 uppercase tracking-widest text-center mb-4">
+            FIVORIANA MAHAKASIKA NY FANOMANANA NY FOIRE MEVA @ 29 JOLAY
             HATRAMIN'NY 01 AOGOSITRA 2026
           </h2>
         </div>
